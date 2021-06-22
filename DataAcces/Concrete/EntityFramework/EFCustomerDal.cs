@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.DataAccess.EntityFramework;
 using DataAcces.Abstract;
 using Entities.Concrete;
 using Entities.Conscrete;
@@ -11,31 +12,7 @@ using System.Threading.Tasks;
 
 namespace DataAcces.Concrete.EntityFramework
 {
-    public class EFCustomerDal : ICustomerDal
+    public class EFCustomerDal : EFEntityRepositoryBase<Customer, NorthWindContext>, ICustomerDal
     {
-        public void Add(Customer entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Customer entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Customer Get(Expression<Func<Customer, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Customer> GetAll(Expression<Func<Customer, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Uptade(Customer entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

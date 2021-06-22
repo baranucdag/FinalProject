@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    interface ICategoryDal:IEntityRepostory<Category>
+    interface ICategoryDal:IEntityRepository<Category>
     {
     }
 }
