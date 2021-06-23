@@ -1,4 +1,5 @@
-﻿using Entities.Conscrete;
+﻿using Entities.Concrete;
+using Entities.Conscrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace DataAcces.Abstract
 {
     public interface IProductDal:IEntityRepository<Product>
     {
+        List<ProductDetailDto> GetProductDetails();
     }
 }

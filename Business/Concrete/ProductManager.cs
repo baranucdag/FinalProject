@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using DataAcces.Abstract;
+using Entities.Concrete;
 using Entities.Conscrete;
+using System;
 using System.Collections.Generic;
 
 namespace Business.Concrete
@@ -19,6 +21,22 @@ namespace Business.Concrete
             //İş kodları
             return _productDal.GetAll();    //burada filtreleme yapmak adına daha öncesinde IEntityRepostory interfac'ıne fonksiyonel işlev eklemiştik
                                             //p=>p.PateboryId=2 yazabiliriz parantez içerisine
+        }
+
+        public List<Product> GetAllByCategoryId(int id)
+        {
+            return _productDal.GetAll(p => p.CategoryId == id);
+
+        }
+
+        public List<Product> GetByUnitPrice(decimal min, decimal max)
+        {
+            return _productDal.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max);
+        }
+
+        public List<ProductDetailDto> GetProductDetails()
+        {
+            return _productDal.GetProductDetails();
         }
     }
 }
