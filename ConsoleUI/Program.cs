@@ -8,9 +8,8 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //ProductTest();
 
-            //CategoryTest();
+            CategoryTest();
 
             JoinTest();
 
@@ -18,11 +17,21 @@ namespace ConsoleUI
 
         private static void JoinTest()
         {
-            ProductManager productManager1 = new ProductManager(new EFProductDal());            //
-            foreach (var itemss in productManager1.GetProductDetails())
+            ProductManager productManager = new ProductManager(new EFProductDal());          
+            var result = productManager.GetProductDetails();
+            if (result.Succes==true)
             {
-                Console.WriteLine(itemss.ProductName + "  " + itemss.CategoryName + itemss.UnitsInStock);
+                foreach (var itemss in result.Data)
+                {
+                    Console.WriteLine(itemss.ProductName + "/ " + itemss.CategoryName);
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+            
+           
         }
 
         private static void CategoryTest()
@@ -34,13 +43,19 @@ namespace ConsoleUI
             }
         }
 
-        private static void ProductTest()
-        {
-            ProductManager productManager = new ProductManager(new EFProductDal());  //Previous data source was InMemoryProductDal.
-            foreach (var product in productManager.GetAll())                         //We changed data source only by change 1 place(EFProductdal)
-            {
-                Console.WriteLine(product.ProductName);
-            }
-        }
+      
     }
 }
+
+
+
+// ProductTest();
+//private static void ProductTest()
+//{
+//    ProductManager productManager = new ProductManager(new EFProductDal());  //Previous data source was InMemoryProductDal.
+//                                                                             //We changed data source only by change 1 place(EFProductdal)
+//    foreach (var product in productManager.GetAll().Data)                         
+//    {
+//        Console.WriteLine(product.ProductName);
+//    }
+//}
