@@ -10,9 +10,15 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
 
-            //CategoryTest();
+            CategoryTest();
 
-            //JoinTest();
+            JoinTest();
+            ProductManager productManager = new ProductManager(new EFProductDal());
+            var resultProduct = productManager.GetAll();
+            foreach (var item in resultProduct.Data)
+            {
+                Console.WriteLine("   "+item.ProductId+item.ProductName);
+            }
 
         }
 

@@ -21,7 +21,6 @@ namespace WebAPI.Controllers
             _productService = productService;
         }
         [HttpGet]
-
         public List<Product> Get()
         {
             var result = _productService.GetAll();
