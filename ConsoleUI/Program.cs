@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using DataAcces.Concrete.EntityFramework;
 using System;
 
@@ -9,9 +10,9 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
 
-            CategoryTest();
+            //CategoryTest();
 
-            JoinTest();
+            //JoinTest();
 
         }
 

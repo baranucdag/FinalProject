@@ -10,8 +10,8 @@ namespace Business.Constans
     public static class Messages            //static sınıflar new'lenmeye ihtiyaç duymaz.
     {                                       //burada sabit mesajlar yazılır.
         public static string ProductAdded = "Product added.";
-        public static string ProductNameİnvalid = "Product name invalid";
-        public static string MaintenanceTime="system is currently under maintenance";
+        public static string ProductNameİnvalid = "Given product name is invalid!";
+        public static string MaintenanceTime="system is currently under maintenance!";
         public static string ProductListed="Producs has been listed";
     }
 }
