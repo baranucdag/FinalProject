@@ -31,10 +31,10 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            //if (DateTime.Now.Hour==14)
-            //{
-            //    return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
-            //}
+            if (DateTime.Now.Hour == 11)
+            {
+                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+            }
             return new SuccesDataResult<List<Product>>(_productDal.GetAll(),Messages.ProductListed);    
         }
 
