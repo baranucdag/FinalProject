@@ -36,11 +36,11 @@ namespace WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });                                                                //IoC Add : Contain different reference services.
-            services.AddSingleton<IProductService, ProductManager>();          //if defined references than you can use them without new class.    
-            services.AddSingleton<IProductDal, EFProductDal>();                //we can give I..Service and ...Manager as an example. 
+            //services.AddSingleton<IProductService, ProductManager>();          //if defined references than you can use them without new class.    
+            //services.AddSingleton<IProductDal, EFProductDal>();                //we can give I..Service and ...Manager as an example. 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) 
         {
             if (env.IsDevelopment())
             {
