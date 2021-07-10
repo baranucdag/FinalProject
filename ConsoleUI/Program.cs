@@ -12,34 +12,34 @@ namespace ConsoleUI
 
             CategoryTest();
 
-            JoinTest();
-            ProductManager productManager = new ProductManager(new EFProductDal());
-            var resultProduct = productManager.GetAll();
-            foreach (var item in resultProduct.Data)
-            {
-                Console.WriteLine("   "+item.ProductId+item.ProductName);
-            }
+            //JoinTest();
+            //ProductManager productManager = new ProductManager(new EFProductDal());
+            //var resultProduct = productManager.GetAll();
+            //foreach (var item in resultProduct.Data)
+            //{
+            //    Console.WriteLine("   "+item.ProductId+item.ProductName);
+            //}
 
         }
 
-        private static void JoinTest()
-        {
-            ProductManager productManager = new ProductManager(new EFProductDal());          
-            var result = productManager.GetProductDetails();
-            if (result.Succes==true)
-            {
-                foreach (var itemss in result.Data)
-                {
-                    Console.WriteLine(itemss.ProductName + "/ " + itemss.CategoryName);
-                }
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
+        //private static void JoinTest()
+        //{
+        //    ProductManager productManager = new ProductManager(new EFProductDal());          
+        //    var result = productManager.GetProductDetails();
+        //    if (result.Succes==true)
+        //    {
+        //        foreach (var itemss in result.Data)
+        //        {
+        //            Console.WriteLine(itemss.ProductName + "/ " + itemss.CategoryName);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine(result.Message);
+        //    }
             
            
-        }
+        //}
 
         private static void CategoryTest()
         {
