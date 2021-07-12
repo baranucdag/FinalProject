@@ -17,28 +17,19 @@ namespace Business.Concrete
     public class ProductManager : IProductService
     {
         IProductDal _productDal;
-        ILogger _logger;
 
-        public ProductManager(IProductDal productDal,ILogger logger)
+        public ProductManager(IProductDal productDal)
         {
             _productDal = productDal;
-            _logger = logger;
         }
 
-        //[ValidationAspect(typeof(ProductValidator))]       //validate add methods according to ProductValidator. 
+        [ValidationAspect(typeof(ProductValidator))]       //validate add methods according to ProductValidator. 
         public IResult Add(Product product)
         {
-            _logger.Log();
-            try
-            {
+                    //business field
                 _productDal.Add(product);
-                return new Result(true, Messages.ProductAdded);
-            }
-            catch (Exception exception)
-            {
-                _logger.Log();
-            }
-            return new ErrorResult();
+                return new SuccesResult( Messages.ProductAdded);
+           
 
         }
 
