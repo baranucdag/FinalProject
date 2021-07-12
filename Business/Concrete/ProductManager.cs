@@ -11,6 +11,7 @@ using Entities.Conscrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Business.Concrete
 {
@@ -26,10 +27,16 @@ namespace Business.Concrete
         [ValidationAspect(typeof(ProductValidator))]       //validate add methods according to ProductValidator. 
         public IResult Add(Product product)
         {
-                    //business field
+            //business field
+
+            if (CheckIfProductCountOfCagetoryCorrect(product.CategoryId).Succes && CheckIfProductNameExist(product.ProductName).Succes)
+            {
+
                 _productDal.Add(product);
-                return new SuccesResult( Messages.ProductAdded);
-           
+                return new SuccesResult(Messages.ProductAdded);
+            }
+            return new ErrorResult();
+
 
         }
 
@@ -39,7 +46,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
-            return new SuccesDataResult<List<Product>>(_productDal.GetAll(),Messages.ProductListed);    
+            return new SuccesDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductListed);
         }
 
         public IDataResult<List<Product>> GetAllByCategoryId(int id)
@@ -49,7 +56,7 @@ namespace Business.Concrete
         }
         public IDataResult<Product> GetById(int productId)
         {
-            return new SuccesDataResult<Product>(_productDal.Get(p=>p.ProductId==productId));
+            return new SuccesDataResult<Product>(_productDal.Get(p => p.ProductId == productId));
         }
 
 
@@ -70,6 +77,26 @@ namespace Business.Concrete
         public void Delete(Product product)
         {
             _productDal.Delete(product);
+        }
+
+        private IResult CheckIfProductCountOfCagetoryCorrect(int categoryId)
+        {
+            var result = _productDal.GetAll(p => p.CategoryId == categoryId).Count;
+            if (result >= 10)
+            {
+                return new ErrorResult(Messages.ProductAmountOfCategoryError);
+            }
+            return new SuccesResult();
+        } 
+
+        private IResult CheckIfProductNameExist(string productName)
+        {
+            var result = _productDal.GetAll(p => p.ProductName == productName).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.ProductNameExist);
+            }
+            return new SuccesResult();
         }
     }
 }
