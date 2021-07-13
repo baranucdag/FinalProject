@@ -10,7 +10,7 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
 
-            CategoryTest();
+            //CategoryTest();
 
             //JoinTest();
             //ProductManager productManager = new ProductManager(new EFProductDal());
@@ -41,14 +41,14 @@ namespace ConsoleUI
            
         //}
 
-        private static void CategoryTest()
-        {
-            CategoryManager categoryManager = new CategoryManager(new EFCategoryDal());
-            foreach (var categories in categoryManager.GetAll())
-            {
-                Console.WriteLine(categories.CategoryName);
-            }
-        }
+        //private static void CategoryTest()
+        //{
+        //    CategoryManager categoryManager = new CategoryManager(new EFCategoryDal());
+        //    foreach (var categories in categoryManager.GetAll())
+        //    {
+        //        Console.WriteLine(categories.CategoryName);
+        //    }
+        //}
 
       
     }

@@ -1,4 +1,5 @@
-﻿using Entities.Conscrete;
+﻿using Core.Utilities.Results;
+using Entities.Conscrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace Business.Constans
         public static string ProductListed="Producs has been listed";
         public static string ProductAmountOfCategoryError = "Amount of category Error.";
         public static string ProductNameExist = "Product name already available";
+        public static string CategoryLimitExceted="Amount of category already over 15";
     }
 }
