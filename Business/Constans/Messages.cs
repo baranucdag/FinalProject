@@ -1,8 +1,10 @@
-﻿using Core.Utilities.Results;
+﻿using Core.Entities.Concrete;
+using Core.Utilities.Results;
 using Entities.Conscrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,5 +19,12 @@ namespace Business.Constans
         public static string ProductAmountOfCategoryError = "Amount of category Error.";
         public static string ProductNameExist = "Product name already available";
         public static string CategoryLimitExceted="Amount of category already over 15";
+        public static string AuthorizationDenied = "Authorization denied";
+        public static string UserRegistered = "User registered";
+        public static string UserNotFound = "User couldn't found";
+        public static string PasswordError = "Plase check password";
+        public static string SuccessfulLogin = "Succes login";
+        public static string UserAlreadyExists = "User already exist. Please check it";
+        public static string AccessTokenCreated = "Acces token created";
     }
 }
