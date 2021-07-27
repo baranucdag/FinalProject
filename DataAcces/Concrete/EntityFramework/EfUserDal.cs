@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAcces.Concrete.EntityFramework
 {
-    public class EFUserDal : EFEntityRepositoryBase<User, NorthWindContext>, IUserDal
+    public class EfUserDal : EFEntityRepositoryBase<User, NorthWindContext>, IUserDal
     {
         public List<OperationClaim> GetClaims(User user)
         {
@@ -21,6 +21,7 @@ namespace DataAcces.Concrete.EntityFramework
                              where userOperationClaim.UserId == user.Id
                              select new OperationClaim { Id = operationClaim.Id, Name = operationClaim.Name };
                 return result.ToList();
+
             }
         }
     }
