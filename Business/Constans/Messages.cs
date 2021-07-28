@@ -19,7 +19,7 @@ namespace Business.Constans
         public static string ProductAmountOfCategoryError = "Amount of category Error.";
         public static string ProductNameExist = "Product name already available";
         public static string CategoryLimitExceted="Amount of category already over 15";
-        public static string AuthorizationDenied = "Authorization denied";
+        public static string AuthorizationDenied = "yetkiniz yok";
         public static string UserRegistered = "User registered";
         public static string UserNotFound = "User couldn't found";
         public static string PasswordError = "Plase check password";

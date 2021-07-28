@@ -28,7 +28,7 @@ namespace Business.Concrete
             _categoryService = categoryService;
         }
 
-        //[SecuredOperation("product.add,admin")]
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]       //validate add methods according to ProductValidator. 
         public IResult Add(Product product)
         {
@@ -42,6 +42,7 @@ namespace Business.Concrete
             }
 
             _productDal.Add(product);
+
             return new SuccesResult(Messages.ProductAdded);
 
         }
@@ -88,8 +89,9 @@ namespace Business.Concrete
 
         private IResult CheckIfProductCountOfCagetoryCorrect(int categoryId)
         {
+            //Select count(*) from products where categoryId=1
             var result = _productDal.GetAll(p => p.CategoryId == categoryId).Count;
-            if (result >= 10)
+            if (result >= 15)
             {
                 return new ErrorResult(Messages.ProductAmountOfCategoryError);
             }
@@ -109,11 +111,11 @@ namespace Business.Concrete
         private IResult CheckIfCatageoryLimitExceted()
         {
             var result = _categoryService.GetAll();
-            if (result.Data.Count>=15)
+            if (result.Data.Count>15)
             {
-                return new SuccesResult(Messages.CategoryLimitExceted);
+                return new ErrorResult();
             }
-            return new ErrorResult();
+            return new SuccesResult(Messages.CategoryLimitExceted);
         }
     }
 }
