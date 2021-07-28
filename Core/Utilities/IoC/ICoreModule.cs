@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.IoC
 {
-    public interface ICorModule
+    public interface ICoreModule
     {
         void Load(IServiceCollection serviceCollection);
     }

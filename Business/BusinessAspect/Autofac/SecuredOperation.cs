@@ -13,6 +13,7 @@ using Business.Constans;
 
 namespace Business.BusinessAspect.Autofac
 {
+    //JWT
     public class SecuredOperation : MethodInterception
     {
         private string[] _roles;
@@ -21,7 +22,7 @@ namespace Business.BusinessAspect.Autofac
         public SecuredOperation(string roles)
         {
             _roles = roles.Split(',');
-            _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();      //we can use our system also for web forms(injections)
+            _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
 
         }
 

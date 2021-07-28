@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Core.DependencyResolvers
 {
-    public class CoreModule : ICorModule
+    public class CoreModule : ICoreModule
     {
         public void Load(IServiceCollection serviceCollection)
         {
