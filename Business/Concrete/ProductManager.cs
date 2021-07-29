@@ -92,9 +92,10 @@ namespace Business.Concrete
             _productDal.Uptade(product);
             return new SuccesResult(Messages.ProductUpdated);
         }
-        public void Delete(Product product)
+        public IResult Delete(Product product)
         {
-            _productDal.Delete(product);
+             _productDal.Delete(product);
+            return new SuccesResult(Messages.ProductDeleted);
         }
 
         private IResult CheckIfProductCountOfCagetoryCorrect(int categoryId)
@@ -131,7 +132,15 @@ namespace Business.Concrete
         [TransactionScopeAspect]
         public IResult AddTransactionTest(Product product)
         {
-            throw new NotImplementedException();
+            Add(product);
+            if (product.UnitPrice < 10)
+            {
+                throw new Exception("");
+            }
+
+            Add(product);
+
+            return null;
         }
     }
 }

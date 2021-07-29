@@ -27,5 +27,9 @@ namespace Business.Constans
         public static string UserAlreadyExists = "User already exist. Please check it";
         public static string AccessTokenCreated = "Acces token created";
         public static string ProductUpdated = "Product updated";
+        public static string ProductDeleted = "Product deleted";
+        public static string CategoryAdded = "Category added";
+        public static string CategoryUpdated = "Category updated";
+        public static string CategoryDeleted = "CategoryDeleted";
     }
 }
