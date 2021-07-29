@@ -4,6 +4,9 @@ using Business.CCS;
 using Business.Constans;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
+using Core.Aspects.Caching;
+using Core.Aspects.Performance;
+using Core.Aspects.Transaction;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
@@ -28,8 +31,9 @@ namespace Business.Concrete
             _categoryService = categoryService;
         }
 
-        [SecuredOperation("product.add,admin")]
+        //[SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]       //validate add methods according to ProductValidator. 
+        [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
         {
             //business field
@@ -47,7 +51,7 @@ namespace Business.Concrete
 
         }
 
-
+        [CacheAspect]
         public IDataResult<List<Product>> GetAll()
         {
             if (DateTime.Now.Hour == 11)
@@ -62,6 +66,9 @@ namespace Business.Concrete
             return new SuccesDataResult<List<Product>>(_productDal.GetAll(p => p.CategoryId == id));
 
         }
+
+        [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<Product> GetById(int productId)
         {
             return new SuccesDataResult<Product>(_productDal.Get(p => p.ProductId == productId));
@@ -78,9 +85,12 @@ namespace Business.Concrete
             return new SuccesDataResult<List<ProductDetailDto>>(_productDal.GetProductDetails());
         }
 
-        public void Uptade(Product product)
+        [ValidationAspect(typeof(ProductValidator))]
+        [CacheRemoveAspect("IProductService.Get")]
+        public IResult Uptade(Product product)
         {
             _productDal.Uptade(product);
+            return new SuccesResult(Messages.ProductUpdated);
         }
         public void Delete(Product product)
         {
@@ -116,6 +126,12 @@ namespace Business.Concrete
                 return new ErrorResult();
             }
             return new SuccesResult(Messages.CategoryLimitExceted);
+        }
+
+        [TransactionScopeAspect]
+        public IResult AddTransactionTest(Product product)
+        {
+            throw new NotImplementedException();
         }
     }
 }
