@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Core.DataAccess.EntityFramework
 {
-    public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>   //we need 2 type firs one is table typr(product, customer), secons one is context type (Npethwind)
+    public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>   //we need 2 type first one is table typr(product, customer), secons one is context type (Npethwind)
         where TEntity : class, IEntity, new()                //table of database        //TEntity rules (cannot contain IEntity)
         where TContext : DbContext, new()
     {
