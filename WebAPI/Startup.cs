@@ -77,8 +77,10 @@ namespace WebAPI
 
             app.UseCors(builder=>builder.AllowAnyHeader().AllowAnyOrigin());
 
-            app.UseHttpsRedirection();
+            //app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
+            app.UseHttpsRedirection();
+       
             app.UseRouting();
 
             app.UseAuthentication();
